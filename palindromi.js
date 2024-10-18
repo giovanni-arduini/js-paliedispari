@@ -7,7 +7,7 @@ const newWord = prompt("Inserisci una parola e scopri se è palindromo"); //stri
 
 // funzione
 
-let reversedWord = " ";
+// let reversedWord = " ";
 function isPalindrome(word) {
   let message = " ";
   word = newWord;
