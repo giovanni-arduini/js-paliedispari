@@ -6,40 +6,56 @@
  */
 
 // Scelta pari o dispari
-let userSide;
-const userChoice = prompt('Scrivi "pari" o "dispari" per scegliere');
-const userChoiceUpper = userChoice.toUpperCase();
-// IF utente sceglie pari
-//  => giocherà per i pari
-if (userChoiceUpper === "PARI") {
-  userSide = "even";
-}
 
-// console.log(userSide);
-
-// ELSE utente sceglie dispari
-//  => giocherà per i dispari
-
-// Inserire un numero da 1 a 5 inclusi
-// function chooseNumber() {
-let number;
-const userNumber = prompt("Scegliere un numero da 1 a 5");
-while ((number = userNumber)) {
-  if (userNumber >= 1 && userNumber <= 5) {
-    number = userNumber;
-    console.log(number);
+function getUserSide() {
+  const userChoice = prompt('Scrivi "pari" o "dispari" per scegliere');
+  const userChoiceUpper = userChoice.toUpperCase();
+  // IF utente sceglie pari
+  //  => giocherà per i pari
+  if (userChoiceUpper === "PARI") {
+    return "even";
+    // ELSE utente sceglie dispari
+    //  => giocherà per i dispari
+  } else if (userChoiceUpper === "DISPARI") {
+    return "odd";
   } else {
-    window.alert("Scegliere solo numeri da 1 a 5 inclusi!");
-    const userNumber = prompt("Scegliere un numero da 1 a 5");
+    return null;
   }
 }
-// }
+
+// Inserire un numero da 1 a 5 inclusi
+
+function getUserNumber() {
+  const userNumber = parseInt(prompt("Scegliere un numero da 1 a 5"));
+  return parseInt(userNumber);
+}
 
 // FUNZIONE
-// generare un numero randome da 1 a 5 inlcusi
+// generare un numero random da 1 a 5 inlcusi
+let cpuTurn;
+function cpuRandomNumber() {
+  cpuTurn = Math.floor(Math.random() * 5 + 1);
+  return cpuTurn;
+}
+const cpuNumber = cpuRandomNumber();
+console.log(cpuNumber);
 
 // FUNZIONE
 // Sommare i due numeri
 // verificare se somma è pari o dispari
+
+let result;
+function isSumEven(num1, num2) {
+  if ((num1 + num2) % 2 === 0) {
+    result = "even";
+    return result;
+  } else {
+    result = "odd";
+    return result;
+  }
+}
+
+const evenOrOdd = isSumEven(userNumber, cpuNumber);
+console.log(result);
 
 // Decretare vincitore
