@@ -6,6 +6,10 @@
  */
 
 // Scelta pari o dispari
+const EVEN = "even";
+const ODD = "odd";
+const PARI = "pari";
+const DISPARI = "dispari";
 
 function getUserSide() {
   const userChoice = prompt('Scrivi "pari" o "dispari" per scegliere');
@@ -23,6 +27,13 @@ function getUserSide() {
   }
 }
 
+function getCpuSide(userSide) {
+  if (userSide === "even") {
+    return "odd";
+  }
+  return "even";
+}
+
 // Inserire un numero da 1 a 5 inclusi
 
 function getUserNumber() {
@@ -30,32 +41,40 @@ function getUserNumber() {
   return parseInt(userNumber);
 }
 
-// FUNZIONE
 // generare un numero random da 1 a 5 inlcusi
-let cpuTurn;
-function cpuRandomNumber() {
-  cpuTurn = Math.floor(Math.random() * 5 + 1);
-  return cpuTurn;
+function getCpuNumber() {
+  return Math.floor(Math.random() * 5 + 1);
 }
-const cpuNumber = cpuRandomNumber();
-console.log(cpuNumber);
 
 // FUNZIONE
 // Sommare i due numeri
 // verificare se somma è pari o dispari
 
-let result;
-function isSumEven(num1, num2) {
+function isSumEvenOrOdd(num1, num2) {
   if ((num1 + num2) % 2 === 0) {
-    result = "even";
-    return result;
-  } else {
-    result = "odd";
-    return result;
+    return "even";
   }
+  return "odd";
 }
 
-const evenOrOdd = isSumEven(userNumber, cpuNumber);
-console.log(result);
-
 // Decretare vincitore
+
+function getWinner(userSide, sumStatus) {
+  if (userSide === sumStatus) {
+    return "Il giocatore 1 ha vinto!";
+  }
+  return "Le macchine vincono di nuovo";
+}
+
+const userSide = getUserSide();
+console.log(userSide);
+const userNumber = getUserNumber();
+console.log(userNumber);
+// const cpuSide = getCpuSide(userSide);
+const cpuNumber = getCpuNumber();
+console.log(cpuNumber);
+const sumStatus = isSumEvenOrOdd(userNumber, cpuNumber);
+console.log(sumStatus);
+
+const winner = getWinner(userSide, sumStatus);
+console.log(winner);
